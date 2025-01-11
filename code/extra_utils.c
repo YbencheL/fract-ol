@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   extra_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 19:17:22 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/11 13:45:18 by ybenchel         ###   ########.fr       */
+/*   Created: 2025/01/11 13:36:25 by ybenchel          #+#    #+#             */
+/*   Updated: 2025/01/11 13:36:52 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../code/fractol.h"
+#include "fractol.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+t_comx	sum_comx(t_comx z1, t_comx z2)
 {
-	size_t	i;
+	t_comx	result;
 
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		if (s1[i] == '\0' || s2[i] == '\0')
-			break ;
-		i++;
-	}
-	return (0);
+	result.x = z1.x + z2.x;
+	result.y = z1.y + z2.y;
+	return (result);
 }
 
-/*int main()
+t_comx	square_comx(t_comx z)
 {
-	char *s1 = "Hello\0hello";
-	char *s2 = "Hellohelli\0";
-	printf("%d\n", ft_strncmp(s1, s2, 12));
-	return (0);
-}*/
+	t_comx	result;
+
+	result.x = (z.x * z.x) - (z.y * z.y);
+	result.y = 2 * z.x * z.y;
+	return (result);
+}
+
+t_comx	abs_comx(t_comx z)
+{
+	t_comx	result;
+
+	result.x = fabs(z.x);
+	result.y = fabs(z.y);
+	return (result);
+}

@@ -6,11 +6,11 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:25:23 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/04 13:41:02 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:45:24 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../code/fractol.h"
 
 size_t	ft_strlen(const char *s)
 {

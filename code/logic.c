@@ -6,7 +6,7 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:02:29 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/09 13:18:40 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:29:32 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	handle_pixel(int x, int y, t_vars *fract)
 	init_julia(fract, &c, z);
 	while (i < fract->iteration)
 	{
+		if (!ft_strncmp(fract->name, "burning_ship", 12))
+			z = abs_comx(z);
 		z = sum_comx(square_comx(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
 		{
@@ -73,14 +75,16 @@ void	fract_render(t_vars *fract)
 	int	x;
 	int	y;
 
-	y = -1;
-	while (++y < HEIGHT)
+	y = 0;
+	while (y < HEIGHT)
 	{
-		x = -1;
-		while (++x < WIDTH)
+		x = 0;
+		while (x < WIDTH)
 		{
 			handle_pixel(x, y, fract);
+			x++;
 		}
+		y++;
 	}
 	mlx_put_image_to_window(fract->mlx, fract->win, fract->img.img_p, 0, 0);
 }

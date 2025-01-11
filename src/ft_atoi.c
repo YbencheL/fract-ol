@@ -6,11 +6,11 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:56:21 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/07 15:52:40 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:45:28 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../code/fractol.h"
 
 static int	skip_ws_and_s(const char *str, int *sign)
 {

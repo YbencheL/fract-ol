@@ -6,15 +6,15 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:39:37 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/07 16:29:49 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:43:22 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 // resolution
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1200
+# define HEIGHT 1200
 // colors
 # define BLACK   0x000000
 # define WHITE   0xFFFFFF
@@ -30,7 +30,7 @@
 # define PURPLE  0x800080
 # define BROWN   0xA52A2A
 
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -78,6 +78,7 @@ void	fract_render(t_vars *fract);
 // calculation of the mandelbrot and julia formulas
 t_comx	square_comx(t_comx z);
 t_comx	sum_comx(t_comx z1, t_comx z2);
+t_comx	abs_comx(t_comx z);
 // mapping the position of pixels
 double	map(double unscaled_num, double old_max,
 			double new_min, double new_max);

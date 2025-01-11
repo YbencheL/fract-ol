@@ -6,11 +6,11 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:50:00 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/07 15:56:12 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:45:30 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "../code/fractol.h"
 
 double	ft_atof(const char *str)
 {
