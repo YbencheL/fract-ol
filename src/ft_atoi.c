@@ -6,7 +6,7 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:56:21 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/11 13:45:28 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:08:47 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
-

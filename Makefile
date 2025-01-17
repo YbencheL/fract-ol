@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -Lminilibx-linux -lmlx -lX11 -lXext -lm
 
-SRC = code/fractol.c code/utils.c code/logic.c code/utilities.c code/extra_utils.c src/ft_strlen.c src/ft_strncmp.c src/ft_atoi.c src/ft_atof.c \
+SRC = code/fractol.c code/utils.c code/logic.c code/hooks.c code/extra_utils.c src/ft_strlen.c src/ft_strncmp.c src/ft_atoi.c src/ft_atof.c \
 	  ft_printf/ft_putchar.c ft_printf/ft_putstr.c ft_printf/ft_putnbr.c ft_printf/ft_handle_percent.c \
        ft_printf/ft_intlen.c ft_printf/ft_puthexo.c ft_printf/ft_putptr.c \
        ft_printf/ft_printf.c ft_printf/ft_putnbr_unsigned.c ft_printf/ft_intlen_base.c

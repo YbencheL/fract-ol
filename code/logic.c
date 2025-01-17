@@ -6,20 +6,11 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 11:02:29 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/11 13:29:32 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:04:34 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	data_init(t_vars *fract)
-{
-	fract->zoom = 1;
-	fract->iteration = 100;
-	fract->escape_v = 4;
-	fract->offset_x = 0;
-	fract->offset_y = 0;
-}
 
 static void	pixel_put(int x, int y, t_img *img, int color)
 {
@@ -51,8 +42,8 @@ static void	handle_pixel(int x, int y, t_vars *fract)
 	int		color;
 
 	i = 0;
-	z.x = map(x, WIDTH, -2.0, 1.0) * fract->zoom + fract->offset_x;
-	z.y = map(y, HEIGHT, -1.5, 1.5) * fract->zoom + fract->offset_y;
+	z.x = scale_and_map(x, WIDTH, -2.0, 1.0) * fract->zoom + fract->offset_x;
+	z.y = scale_and_map(y, HEIGHT, -1.5, 1.5) * fract->zoom + fract->offset_y;
 	init_julia(fract, &c, z);
 	while (i < fract->iteration)
 	{
@@ -61,7 +52,7 @@ static void	handle_pixel(int x, int y, t_vars *fract)
 		z = sum_comx(square_comx(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fract->escape_v)
 		{
-			color = map(i, fract->iteration, BLACK, WHITE);
+			color = scale_and_map(i, fract->iteration, BLACK, WHITE);
 			pixel_put(x, y, &fract->img, color);
 			return ;
 		}

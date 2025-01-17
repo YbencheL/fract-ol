@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:07:15 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/09 13:09:29 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:05:36 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 int	close_program(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->img.img_p)
+		mlx_destroy_image(vars->mlx, vars->img.img_p);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->mlx)
+	{
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+	}
 	exit(0);
 	return (0);
 }
@@ -37,13 +45,25 @@ int	key_hook(int keycode, t_vars *vars)
 
 int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
-	(void)x;
-	(void)y;
+	double	mouse_x;
+	double	mouse_y;
+	double	zoom_factor;
+
+	mouse_x = (double)x / WIDTH * (1.0 - (-2.0)) + (-2.0);
+	mouse_y = (double)y / HEIGHT * (1.5 - (-1.5)) + (-1.5);
 	if (button == 4)
-		vars->zoom *= 1.1;
+		zoom_factor = 1.1;
 	else if (button == 5)
-		vars->zoom /= 1.1;
-	fract_render(vars);
+		zoom_factor = 1 / 1.1;
+	else
+		zoom_factor = 1.0;
+	if (zoom_factor != 1.0)
+	{
+		vars->offset_x = (vars->offset_x - mouse_x) * zoom_factor + mouse_x;
+		vars->offset_y = (vars->offset_y - mouse_y) * zoom_factor + mouse_y;
+		vars->zoom *= zoom_factor;
+		fract_render(vars);
+	}
 	return (0);
 }
 

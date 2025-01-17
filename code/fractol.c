@@ -6,11 +6,24 @@
 /*   By: ybenchel <ybenchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:33:53 by ybenchel          #+#    #+#             */
-/*   Updated: 2025/01/11 13:35:52 by ybenchel         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:17:44 by ybenchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	ft_error(void)
+{
+	ft_printf("============================================\n");
+	ft_printf("||              Wrong Input!              ||\n");
+	ft_printf("============================================\n");
+	ft_printf("||          Try the following ones:       ||\n");
+	ft_printf("||  ./fractol mandelbrot                  ||\n");
+	ft_printf("||  ./fractol julia x y                   ||\n");
+	ft_printf("||  ./fractol burning_ship                ||\n");
+	ft_printf("============================================\n");
+	exit(1);
+}
 
 int	main(int ac, char **av)
 {
@@ -32,8 +45,5 @@ int	main(int ac, char **av)
 		mlx_loop(fract.mlx);
 	}
 	else
-	{
-		ft_printf("wrong input\n");
-		exit(1);
-	}
+		ft_error();
 }
